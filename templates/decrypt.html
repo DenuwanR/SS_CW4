@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Decrypt Messages</title>
+</head>
+<body>
+    <div id="decrypt-container" class="container">
+        <div class="form-container">
+            <h1 class="form-title">Decrypted Messages</h1>
+
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No messages found for your role.</p>
+            {% endif %}
+
+            <form action="{{ url_for('decrypt') }}" method="POST">
+                <input type="submit" value="Refresh">
+                <a href="{{ url_for('home') }}"><button type="button">Home</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/* General Reset and Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #f9f9f9; /* Creamy light color */
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px; /* Adjust as needed */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure positioning context for absolute children */
+}
+
+/* Input, Select, and Textarea Styles */
+input[type="text"], input[type="password"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* General Button Styles */
+button, input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50; /* Default button color */
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Hover Effect */
+button:hover, input[type="submit"]:hover {
+    background-color: #45a049; /* Default hover color */
+}
+
+/* Specific Button Styles for Encrypt Page */
+#encrypt-container .form-container button,
+#encrypt-container .form-container input[type="submit"] {
+    background-color: #45ff74; /* Encrypt page button color */
+}
+
+#encrypt-container .form-container button:hover,
+#encrypt-container .form-container input[type="submit"]:hover {
+    background-color: #45a049; /* Encrypt page button hover color */
+}
+
+/* Page-Specific Background Images */
+#login-container {
+    background-image: url('/static/images/img4.jpg');
+}
+
+#register-container {
+    background-image: url('/static/images/img5.jpg');
+}
+
+#home-container {
+    background-image: url('/static/images/img3.jpg');
+}
+
+#encrypt-container {
+    background-image: url('/static/images/img2.jpeg');
+}
+
+#decrypt-container {
+    background-image: url('/static/images/img1.jpg');
+}
+
+/* Form Titles */
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Textarea */
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Focus Styles */
+input:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Specific Container Styles for Decrypt Page */
+#decrypt-container .form-container {
+    background-image: url('/static/images/decrypt-background.jpg'); /* Replace with your decrypt background image */
+    background-size: cover;
+    background-position: center;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+/* Refresh and Home Button Styles */
+#decrypt-container .form-container input[type="submit"] {
+    background-color: #4CAF50; /* Refresh button color */
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+#decrypt-container .form-container input[type="submit"]:hover {
+    background-color: #45a049; /* Refresh button hover color */
+}
+
+/* Textarea for Decrypted Messages */
+.messages-box {
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Creamy light color */
+    resize: none; /* Prevent resizing */
+    overflow: auto; /* Add scrollbar if content exceeds */
+    font-family: Arial, sans-serif;
+}

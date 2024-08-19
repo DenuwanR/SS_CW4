@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Encrypt Message</title>
+</head>
+<body>
+    <div id="encrypt-container" class="container">
+        <div class="form-container">
+            <h2 class="form-title">Encrypt Message</h2>
+            <form action="{{ url_for('encrypt') }}" method="POST">
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message"></textarea><br>
+                <label for="role">Select Role:</label><br>
+                <select id="role" name="role">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select><br>
+                <input type="submit" value="Encrypt">
+                <a href="{{ url_for('home') }}"><button type="button">Home</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
