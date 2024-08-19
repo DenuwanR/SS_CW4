@@ -38,32 +38,140 @@ input[type="text"], input[type="password"], select, textarea {
 }
 
 /* General Button Styles */
-button, input[type="submit"] {
+button,input[type="submit"] {
     width: 100%;
-    background-color: #4CAF50; /* Default button color */
-    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px; /* Adjust font size as needed */
+    position: relative;
+    overflow: hidden; /* For slide effect */
+    color: white;
 }
 
-/* Hover Effect */
-button:hover, input[type="submit"]:hover {
+/* Hover Effect for All Buttons */
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white for the slide effect */
+    transition: left 0.3s;
+    z-index: 0;
+}
+
+button:hover::before {
+    left: 0;
+}
+
+button {
+    position: relative;
+    z-index: 1;
+}
+
+/* Specific Button Styles */
+
+/* Login Page */
+#login-container .form-container button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+}
+
+#login-container .form-container button[type="button"] {
+    background-color: #007bff; /* Blue */
+}
+
+/* Register Page */
+#register-container .form-container button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+}
+
+#register-container .form-container button[type="button"] {
+    background-color: #007bff; /* Blue */
+}
+
+/* Home Page */
+#home-container .form-container .encrypt-btn {
+    background-color: #28a745; /* Color 1 */
+}
+
+#home-container .form-container .decrypt-btn {
+    background-color: #007bff; /* Color 2 */
+}
+
+#home-container .form-container .logout-btn {
+    background-color: #dc3545; /* Red */
+}
+
+/* Encrypt Page */
+#encrypt-container .form-container .encrypt-btn {
+    background-color: #28a745; /* Color 1 */
+}
+
+#encrypt-container .form-container .home-btn {
+    background-color: #007bff; /* Color 2 */
+}
+
+/* Decrypt Page */
+#decrypt-container .form-container .decrypt-btn {
+    background-color: #28a745; /* Color 1 */
+}
+
+#decrypt-container .form-container .refresh-btn {
+    background-color: #007bff; /* Color 2 */
+}
+
+/* Button Hover Colors */
+button:hover {
     background-color: #45a049; /* Default hover color */
 }
 
-/* Specific Button Styles for Encrypt Page */
-#encrypt-container .form-container button,
-#encrypt-container .form-container input[type="submit"] {
-    background-color: #45ff74; /* Encrypt page button color */
+/* Specific Hover Colors */
+#login-container .form-container button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green for Login button */
 }
 
-#encrypt-container .form-container button:hover,
-#encrypt-container .form-container input[type="submit"]:hover {
-    background-color: #45a049; /* Encrypt page button hover color */
+#login-container .form-container button[type="button"]:hover {
+    background-color: #0056b3; /* Darker blue for Sign Up button */
+}
+
+#register-container .form-container button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green for Register button */
+}
+
+#register-container .form-container button[type="button"]:hover {
+    background-color: #0056b3; /* Darker blue for Login button */
+}
+
+#home-container .form-container .encrypt-btn:hover {
+    background-color: #218838; /* Darker green */
+}
+
+#home-container .form-container .decrypt-btn:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+#home-container .form-container .logout-btn:hover {
+    background-color: #c82333; /* Darker red */
+}
+
+#encrypt-container .form-container .encrypt-btn:hover {
+    background-color: #218838; /* Darker green */
+}
+
+#encrypt-container .form-container .home-btn:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+#decrypt-container .form-container .decrypt-btn:hover {
+    background-color: #218838; /* Darker green */
+}
+
+#decrypt-container .form-container .refresh-btn:hover {
+    background-color: #0056b3; /* Darker blue */
 }
 
 /* Page-Specific Background Images */
@@ -156,4 +264,23 @@ li {
     resize: none; /* Prevent resizing */
     overflow: auto; /* Add scrollbar if content exceeds */
     font-family: Arial, sans-serif;
+    white-space: pre-wrap; /* Preserve whitespace formatting */
+}
+
+
+/* Specific Button Styles for Decrypt Page */
+.refresh-btn {
+    background-color: #007bff; /* Refresh button color */
+}
+
+.refresh-btn:hover {
+    background-color: #0056b3; /* Refresh button hover color */
+}
+
+.home-btn {
+    background-color: #28a745; /* Home button color */
+}
+
+.home-btn:hover {
+    background-color: #218838; /* Home button hover color */
 }

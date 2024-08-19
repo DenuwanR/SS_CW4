@@ -7,6 +7,7 @@ import hashlib
 import mysql.connector
 import os
 from db import get_db_connection
+from flask import session, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -103,6 +104,10 @@ def encrypt():
 
 @app.route('/decrypt', methods=['GET', 'POST'])
 def decrypt():
+    if 'role' not in session:
+        # Redirect to login or handle missing session case
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         connection = get_db_connection()
         if connection is None:
@@ -111,12 +116,12 @@ def decrypt():
         cursor = connection.cursor()
 
         try:
-            # Fetch encrypted message for the user's role
-            cursor.execute('SELECT message FROM messages WHERE role = %s', (session['role'],))
+            role = session['role']  # Fetch the role from the session
+            cursor.execute('SELECT message FROM messages WHERE role = %s', (role,))
             results = cursor.fetchall()
 
+            messages = []
             if results:
-                messages = []
                 for result in results:
                     encrypted_message_des3 = b64decode(result[0])
 
@@ -128,11 +133,9 @@ def decrypt():
                     cipher_rsa = PKCS1_OAEP.new(private_key_rsa)
                     decrypted_message = cipher_rsa.decrypt(decrypted_message_rsa).decode()
 
-                    messages.append(f'Decrypted message: {decrypted_message}')
-                
-                return '<br>'.join(messages)
-            else:
-                return 'No messages found for your role'
+                    messages.append(decrypted_message)
+
+            return render_template('decrypt.html', messages=messages)
 
         except mysql.connector.Error as err:
             print(f"Database error: {err}")
@@ -142,7 +145,9 @@ def decrypt():
             cursor.close()
             connection.close()
 
-    return render_template('decrypt.html')
+    return render_template('decrypt.html', messages=[])
+
+
 
 
 @app.route('/logout')

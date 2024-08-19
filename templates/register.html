@@ -12,15 +12,16 @@
             <h2 class="form-title">Register</h2>
             <form action="{{ url_for('register') }}" method="POST">
                 <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username"><br>
+                <input type="text" id="username" name="username" required><br>
                 <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password"><br>
+                <input type="password" id="password" name="password" required><br>
                 <label for="role">Role:</label><br>
                 <select id="role" name="role">
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                 </select><br>
                 <button type="submit">Register</button>
+                <button type="button" onclick="window.location.href='{{ url_for('login') }}';">Login</button>
             </form>
         </div>
     </div>

@@ -11,19 +11,21 @@
         <div class="form-container">
             <h1 class="form-title">Decrypted Messages</h1>
 
-            {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p>No messages found for your role.</p>
-            {% endif %}
+            <!-- Non-editable textarea to display messages -->
+            <textarea class="messages-box" readonly>
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% else %}
+                    No messages found for your role.
+                {% endif %}
+            </textarea>
 
+            <!-- Refresh and Home Buttons -->
             <form action="{{ url_for('decrypt') }}" method="POST">
-                <input type="submit" value="Refresh">
-                <a href="{{ url_for('home') }}"><button type="button">Home</button></a>
+                <input type="submit" class="refresh-btn" value="Refresh">
+                <a href="{{ url_for('home') }}"><button type="button" class="home-btn">Home</button></a>
             </form>
         </div>
     </div>
